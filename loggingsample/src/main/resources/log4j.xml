@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/' >
+
+    <!--对于ConsoleAppender来说，在开发阶段还是比较有用的，能直接在ide中看到输出的日志内容，
+    但是在实际的产品阶段，我们更希望将日志输出到指定的文件上查看，这就需要用到FileAppender-->
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="encoding" value="UTF-8" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p %t %l %m%n" />
+        </layout>
+        <!--如果有过滤器，当前appender只会处理满足过滤器条件的日志信息-->
+        <!--<filter class="org.apache.log4j.varia.LevelRangeFilter">
+           <param name="levelMin" value="DEBUG" />
+           <param name="levelMax" value="FATAL" />
+           <param name="AcceptOnMatch" value="true" />
+        </filter>-->
+    </appender>
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</log4j:configuration>
